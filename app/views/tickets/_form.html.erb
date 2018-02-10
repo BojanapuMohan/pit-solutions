@@ -1,0 +1,71 @@
+<%= form_for @ticket, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="col-md-12">
+    <div class="control-group">
+    <%= f.label :name, :class => 'control-label col-md-3' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field col-md-9' %>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-12">
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label col-md-3' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field col-md-9' %>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-12">
+  <div class="control-group">
+    <%= f.label :department, :class => 'control-label col-md-3' %>
+    <div class="controls">
+      <%= f.text_field :department, :class => 'text_field col-md-9' %>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-12">
+  <div class="control-group">
+    <%= f.label :subject, :class => 'control-label col-md-3' %>
+    <div class="controls">
+      <%= f.text_area :subject, :class => 'text_field col-md-9' %>
+    </div>
+  </div>
+  </div>
+
+  <% if user_signed_in? && current_user.role == "staff" %>
+    <div class="col-md-12">
+  <div class="control-group">
+    <%= f.label :task_id, :class => 'control-label col-md-3' %>
+    <div class="controls">
+      <%= f.text_field :task_id, :class => 'text_field col-md-9', :disabled => true %>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-12">
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label col-md-3' %>
+    <div class="controls">
+      <%= f.text_field :status, :class => 'text_field col-md-9' %>
+      <%= f.hidden_field :assignee, :value => @ticket.email%>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-12">
+  <div class="control-group">
+    <%= f.label :remarks, :class => 'control-label col-md-3' %>
+    <div class="controls">
+      <%= f.text_field :remarks, :class => 'text_field col-md-9' %>
+    </div>
+  </div>
+  </div>
+  <% else %>
+  
+  <% end %>
+  
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tickets_path, :class => 'btn' %>
+  </div>
+<% end %>
