@@ -45,8 +45,8 @@ Rails.application.configure do
   :address              => "smtp.gmail.com",
   :port                 => 587,
   :domain               => "mail.gmail.com",
-  :user_name            => "secureid.distruptiveapp@gmail.com",
-  :password             => "secure@123",
+  :user_name            => "userpublicemail",
+  :password             => "yourpassword",
   :authentication       => "plain",
   :enable_starttls_auto => true
   }
